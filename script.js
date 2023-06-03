@@ -21,7 +21,7 @@ console.log('area: ', area)
 // nota: el area de un trinagulo es la mitad de de base por altura. 
 
 
-// 2) Calcular el area de la figura geometrica, cuadrado.
+// 3) Calcular el area de la figura geometrica, cuadrado.
 // con dimenciones de:
 // lado = 8 
 // nota: el area de un cuadrado es lado por lado.
