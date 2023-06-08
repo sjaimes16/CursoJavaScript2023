@@ -451,5 +451,5 @@ const generoEdadMenor30 = array.filter(persona => {
     return persona.genero === "Femenino" && persona.edad < 30 || persona.estadoCivil === "Casado"
 });
 
-console.log(generoEdadMenor30)
-console.log(generoEdadMenor30.length)
+// console.log(generoEdadMenor30)
+// console.log(generoEdadMenor30.length)

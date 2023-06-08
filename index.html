@@ -1,14 +1,136 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <script src="./script.js"></script> -->
-    <script src="./index.js"></script>
+  <title>Actualizar Elementos en HTML</title>
 </head>
 <body>
+    <div id="miElemento">Texto inicial</div>
+    <button id="miBoton">Actualizar</button>
+    <button id="filtroGeneroFemenino">Filtrar por Género Femenino</button>
+    <button id="filtroEdad38">Filtrar por Edad 38</button>
+    <button id="filtroEstadoCivilCasado">Filtrar por Estado Civil Casado</button>
+
+  <script>
+
+    personas = [
+        {
+        "nombre": "juan",
+        "genero": "Femenino",
+        "edad": 38,
+        "estadoCivil": "Casado"
+        },
+        {
+        "nombre": "Pedro",
+        "genero": "Masculino",
+        "edad": 27,
+        "estadoCivil": "Divorciado"
+        },
+        {
+        "nombre": "matias",
+        "genero": "Masculino",
+        "edad": 38,
+        "estadoCivil": "Soltero"
+        },
+        {
+        "nombre": "Persona 4",
+        "genero": "Femenino",
+        "edad": 60,
+        "estadoCivil": "Casado"
+        },
+        {
+        "nombre": "Persona 5",
+        "genero": "Femenino",
+        "edad": 19,
+        "estadoCivil": "Casado"
+        },
+        {
+        "nombre": "Persona 6",
+        "genero": "Femenino",
+        "edad": 20,
+        "estadoCivil": "Soltero"
+        },
+        {
+        "nombre": "Persona 7",
+        "genero": "Masculino",
+        "edad": 38,
+        "estadoCivil": "Casado"
+        },
+        {
+        "nombre": "Persona 8",
+        "genero": "Femenino",
+        "edad": 65,
+        "estadoCivil": "Soltero"
+        },
+        {
+        "nombre": "Persona 9",
+        "genero": "Femenino",
+        "edad": 19,
+        "estadoCivil": "Soltero"
+        },
+        {
+        "nombre": "Persona 10",
+        "genero": "Masculino",
+        "edad": 41,
+        "estadoCivil": "Divorciado"
+        }
+    ]
     
+    var miElemento = document.getElementById('miElemento');
+    var miBoton = document.getElementById('miBoton');
+    var filtroGeneroFemenino = document.getElementById('filtroGeneroFemenino');
+    var filtroEdad38 = document.getElementById('filtroEdad38');
+    var filtroEstadoCivilCasado = document.getElementById('filtroEstadoCivilCasado');
+
+    // Función para imprimir la información de cada persona
+    function imprimirInformacionPersonas() {
+      let new_text = '';
+      personas.forEach(persona => {
+        new_text += `<br>${persona.nombre} -- ${persona.edad} -- ${persona.estadoCivil} -- ${persona.genero}`;
+      });
+      miElemento.innerHTML = new_text;
+    }
+
+    // Función para filtrar personas por género
+    function filtrarPorGenero(genero) {
+      let filteredPersonas = personas.filter(persona => persona.genero === genero);
+      imprimirInformacionFiltrada(filteredPersonas);
+    }
+
+    // Función para filtrar personas por edad
+    function filtrarPorEdad(edad) {
+      let filteredPersonas = personas.filter(persona => persona.edad === edad);
+      imprimirInformacionFiltrada(filteredPersonas);
+    }
+
+    // Función para filtrar personas por estado civil
+    function filtrarPorEstadoCivil(estadoCivil) {
+      let filteredPersonas = personas.filter(persona => persona.estadoCivil === estadoCivil);
+      imprimirInformacionFiltrada(filteredPersonas);
+    }
+
+    // Función para imprimir la información filtrada
+    function imprimirInformacionFiltrada(personasFiltradas) {
+      let new_text = '';
+      personasFiltradas.forEach(persona => {
+        new_text += `<br>${persona.nombre} -- ${persona.edad} -- ${persona.estadoCivil} -- ${persona.genero}`;
+      });
+      miElemento.innerHTML = new_text;
+    }
+
+    miBoton.addEventListener('click', imprimirInformacionPersonas);
+
+    filtroGeneroFemenino.addEventListener('click', function() {
+      filtrarPorGenero('Femenino');
+    });
+
+    filtroEdad38.addEventListener('click', function() {
+      filtrarPorEdad(38);
+    });
+
+    filtroEstadoCivilCasado.addEventListener('click', function() {
+      filtrarPorEstadoCivil('Casado');
+    });
+    
+  </script>
 </body>
 </html>
