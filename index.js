@@ -377,26 +377,79 @@ const array = [
     }
   ]
 
-const ejercicio = array.filter(persona => {
-    return persona.genero === "Masculino" || persona.genero === "Femenino";
+const filtarMasculino = array.filter(persona => {
+    return persona.genero === "Masculino" 
 });
 
-const ejercicio2 = array.filter(persona => {
-    // return persona.edad < 20
-    // return persona.edad > 35
-    return persona.edad > 65
+// console.log(filtarMasculino)
+// console.log(filtarMasculino.length)
+
+const filtarFemenino = array.filter(persona => {
+    return persona.genero === "Femenino" 
 });
 
-const ejercicio3 = array.filter(persona => {
-    // return persona.estadoCivil === "Soltero"
+// console.log(filtarFemenino)
+// console.log(filtarFemenino.length)
+
+const menorAVeinte = array.filter(persona => {
+    return persona.edad < 20    
+});
+
+// console.log(menorAVeinte)
+// console.log(menorAVeinte.length)
+
+const mayorA35 = array.filter(persona => {
+    return persona.edad > 35    
+});
+
+// console.log(mayorA35)
+// console.log(mayorA35.length)
+
+const mayorA65 = array.filter(persona => {
+    return persona.edad > 65    
+});
+
+// console.log(mayorA65)
+// console.log(mayorA65.length)
+
+const soltero = array.filter(persona => {
+    return persona.estadoCivil === "Soltero"
+});
+
+// console.log(soltero)
+// console.log(soltero.length)
+
+const casado = array.filter(persona => {
+    return persona.estadoCivil === "Casado"
+});
+
+// console.log(casado)
+// console.log(casado.length)
+
+const divorciado = array.filter(persona => {
     return persona.estadoCivil === "Divorciado"
 });
 
-const ejercicio4 = array.filter(persona => {
-    // return persona.genero === "Masculino" && persona.estadoCivil === "Casado"
-    // return persona.genero === "Masculino" || persona.edad > 40 
+// console.log(divorciado)
+// console.log(divorciado.length)
+
+const generoEstadoCivil = array.filter(persona => {
+    return persona.genero === "Masculino" && persona.estadoCivil === "Casado"
+});
+
+// console.log(generoEstadoCivil)
+// console.log(generoEstadoCivil.length)
+
+const generoEdadMayor40 = array.filter(persona => {
+    return persona.genero === "Masculino" || persona.edad > 40 
+});
+
+// console.log(generoEdadMayor40)
+// console.log(generoEdadMayor40.length)
+
+const generoEdadMenor30 = array.filter(persona => {
     return persona.genero === "Femenino" && persona.edad < 30 || persona.estadoCivil === "Casado"
 });
 
-console.log(ejercicio4);
-console.log(ejercicio4.length);
+console.log(generoEdadMenor30)
+console.log(generoEdadMenor30.length)
