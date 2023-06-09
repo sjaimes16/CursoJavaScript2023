@@ -4,11 +4,18 @@
   <title>Actualizar Elementos en HTML</title>
 </head>
 <body>
+
     <div id="miElemento">Texto inicial</div>
     <button id="miBoton">Actualizar</button>
     <button id="filtroGeneroFemenino">Filtrar por Género Femenino</button>
     <button id="filtroEdad38">Filtrar por Edad 38</button>
     <button id="filtroEstadoCivilCasado">Filtrar por Estado Civil Casado</button>
+
+    <!-- <div id="miElemento">Texto inicial</div>
+    <button id="miBoton" onclick="imprimirInformacionPersonas()">Actualizar</button>
+    <button id="filtroGeneroFemenino" onclick="filtrarPorGenero('Femenino')">Filtrar por Género Femenino</button>
+    <button id="filtroEdad38" onclick="filtrarPorEdad(38)">Filtrar por Edad 38</button>
+    <button id="filtroEstadoCivilCasado" onclick="filtrarPorEstadoCivil('Casado')">Filtrar por Estado Civil Casado</button> -->
 
   <script>
 
@@ -81,7 +88,6 @@
     var filtroEdad38 = document.getElementById('filtroEdad38');
     var filtroEstadoCivilCasado = document.getElementById('filtroEstadoCivilCasado');
 
-    // Función para imprimir la información de cada persona
     function imprimirInformacionPersonas() {
       let new_text = '';
       personas.forEach(persona => {
@@ -90,25 +96,21 @@
       miElemento.innerHTML = new_text;
     }
 
-    // Función para filtrar personas por género
     function filtrarPorGenero(genero) {
       let filteredPersonas = personas.filter(persona => persona.genero === genero);
       imprimirInformacionFiltrada(filteredPersonas);
     }
 
-    // Función para filtrar personas por edad
     function filtrarPorEdad(edad) {
       let filteredPersonas = personas.filter(persona => persona.edad === edad);
       imprimirInformacionFiltrada(filteredPersonas);
     }
 
-    // Función para filtrar personas por estado civil
     function filtrarPorEstadoCivil(estadoCivil) {
       let filteredPersonas = personas.filter(persona => persona.estadoCivil === estadoCivil);
       imprimirInformacionFiltrada(filteredPersonas);
     }
 
-    // Función para imprimir la información filtrada
     function imprimirInformacionFiltrada(personasFiltradas) {
       let new_text = '';
       personasFiltradas.forEach(persona => {
@@ -119,17 +121,17 @@
 
     miBoton.addEventListener('click', imprimirInformacionPersonas);
 
-    filtroGeneroFemenino.addEventListener('click', function() {
-      filtrarPorGenero('Femenino');
-    });
+filtroGeneroFemenino.addEventListener('click', function() {
+  filtrarPorGenero('Femenino');
+});
 
-    filtroEdad38.addEventListener('click', function() {
-      filtrarPorEdad(38);
-    });
+filtroEdad38.addEventListener('click', function() {
+  filtrarPorEdad(38);
+});
 
-    filtroEstadoCivilCasado.addEventListener('click', function() {
-      filtrarPorEstadoCivil('Casado');
-    });
+filtroEstadoCivilCasado.addEventListener('click', function() {
+  filtrarPorEstadoCivil('Casado');
+});
     
   </script>
 </body>
