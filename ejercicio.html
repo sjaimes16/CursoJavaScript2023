@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejerrcicio</title>
+    <style>
+        /* Estilos opcionales para mejorar la apariencia de la tabla */
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        th, td {
+          border: 1px solid black;
+          padding: 8px;
+          text-align: left;
+        }
+      </style>
+</head>
+<body>
+    <h1>Relaciones Mascotas y Dueños</h1>
+  
+    <table id="tablaRelaciones">
+      <thead>
+        <tr>
+          <th>Dueño
+            <button onclick="filtrar('dueño')">Filtrar por Dueño</button>
+          </th>
+          <th>Mascotas
+            <button onclick="filtrar('nombre')">Filtrar por Nombre</button>
+          </th>
+          <th>Especie
+            <button onclick="filtrar('especie')">Filtrar por Especie</button>
+          </th>
+          <th>Género
+            <button onclick="filtrar('genero')">Filtrar por Género</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se generará el contenido de la tabla -->
+      </tbody>
+    </table>
+    
+    <button onclick="restablecerFiltros()">Restablecer Filtros</button>
+
+    <script>
+        const personas = [
+  { id: 2, nombre: 'Valentina', edad: 30, numeroMascotas: 3 },
+  { id: 5, nombre: 'Juan', edad: 51, numeroMascotas: 3 },
+  { id: 7, nombre: 'Carlos', edad: 55, numeroMascotas: 4 },
+  { id: 4, nombre: 'Laura', edad: 47, numeroMascotas: 4 },
+  { id: 6, nombre: 'Andrés', edad: 66, numeroMascotas: 3 },
+  { id: 1, nombre: 'Laura', edad: 42, numeroMascotas: 2 },
+  { id: 9, nombre: 'Laura', edad: 52, numeroMascotas: 4 },
+  { id: 8, nombre: 'María', edad: 30, numeroMascotas: 2 },
+  { id: 3, nombre: 'Sofía', edad: 18, numeroMascotas: 1 },
+  { id: 7, nombre: 'María', edad: 36, numeroMascotas: 2 }
+]
+
+const generarDataPersona = (personas) => {
+  const data = [];
+
+  for (let i = 0; i < personas.length; i++) {
+    const persona = personas[i];
+    const id = persona.id;
+    const nombre = persona.nombre;
+    const edad = persona.edad;
+    const numeroMascotas = Math.floor(Math.random() * 6);
+
+    const jsonData = {
+      id,
+      nombre,
+      edad,
+      "numero de mascotas": numeroMascotas
+    };
+
+    data.push(jsonData);
+  }
+
+  return data;
+};
+
+const dataOriginalPersona = generarDataPersona(personas);
+console.log(dataOriginalPersona);
+
+const especies = ["Perro", "Gato", "Conejo", "Pájaro", "Hamster"];
+const nombres = ["Danna", "Wendy", "Lucas", "Toby", "Simba", "Thor", "Max", "Linda", "Chispa", "Luna"];
+const sexos = ["Macho", "Hembra"];
+
+const generarDataJSON2 = (cantidad, dataPersona) => {
+  const data = [];
+
+  for (let i = 0; i < cantidad; i++) {
+    const id = i + 1;
+    const id_dueño = dataPersona[i].id;
+    const nombreAleatorio = nombres[Math.floor(Math.random() * nombres.length)];
+    const nombre = nombreAleatorio;
+    const edad = Math.floor(Math.random() * 15) + 1;
+    const especie = especies[Math.floor(Math.random() * especies.length)];
+    const sexo = sexos[Math.floor(Math.random() * sexos.length)];
+
+    const jsonData = {
+      id,
+      id_dueño,
+      nombre,
+      edad,
+      especie,
+      sexo
+    };
+
+    data.push(jsonData);
+  }
+
+  return data;
+};
+
+const cantidadMascotas = 10;
+const dataOriginalMascotas = generarDataJSON2(cantidadMascotas, dataOriginalPersona);
+console.log(dataOriginalMascotas);
+
+function visualizarRelaciones(dataPersona, dataMascotas) {
+  // Restablecer los datos originales
+  const dataOriginalPersona = dataPersona;
+  const dataOriginalMascotas = dataMascotas;
+
+  const tablaRelaciones = document.getElementById("tablaRelaciones");
+  const tbody = tablaRelaciones.querySelector("tbody");
+  tbody.innerHTML = ""; // Limpiar el contenido actual de la tabla
+
+  dataPersona.forEach(persona => {
+    const mascotas = dataMascotas.filter(mascota => mascota.id_dueño === persona.id);
+
+    mascotas.forEach(mascota => {
+      const row = document.createElement("tr");
+      const dueñoCell = document.createElement("td");
+      dueñoCell.textContent = persona.nombre;
+      const mascotasCell = document.createElement("td");
+      mascotasCell.textContent = mascota.nombre;
+      const especieCell = document.createElement("td");
+      especieCell.textContent = mascota.especie;
+      const generoCell = document.createElement("td");
+      generoCell.textContent = mascota.sexo;
+
+      row.appendChild(dueñoCell);
+      row.appendChild(mascotasCell);
+      row.appendChild(especieCell);
+      row.appendChild(generoCell);
+      tbody.appendChild(row);
+    });
+  });
+}
+
+// Ejemplo de uso
+visualizarRelaciones(dataOriginalPersona, dataOriginalMascotas);
+
+
+
+function filtrar(tipoFiltro) {
+  const filtro = prompt(`Ingresa el valor para filtrar por ${tipoFiltro}:`);
+
+  if (filtro !== null) {
+    const mascotasFiltradas = dataOriginalMascotas.filter(mascota => {
+      if (tipoFiltro === "dueño") {
+        return mascota.id_dueño.toString() === filtro;
+      } else if (tipoFiltro === "nombre") {
+        return mascota.nombre === filtro;
+      } else if (tipoFiltro === "especie") {
+        return mascota.especie.toLowerCase() === filtro.toLowerCase();
+      } else if (tipoFiltro === "genero") {
+        return mascota.sexo.toLowerCase() === filtro.toLowerCase();
+      }
+    });
+
+    visualizarRelaciones(dataOriginalMascotas, mascotasFiltradas);
+  }
+}
+    
+function visualizarFiltradas(mascotasFiltradas) {
+  const tablaRelaciones = document.getElementById("tablaRelaciones");
+  const tbody = tablaRelaciones.querySelector("tbody");
+  tbody.innerHTML = ""; // Limpiar el contenido actual de la tabla
+
+  mascotasFiltradas.forEach(mascota => {
+    const row = document.createElement("tr");
+    const dueñoCell = document.createElement("td");
+    dueñoCell.textContent = obtenerNombreDueño(mascota.id_dueño);
+    const mascotasCell = document.createElement("td");
+    mascotasCell.textContent = mascota.nombre;
+    const especieCell = document.createElement("td");
+    especieCell.textContent = mascota.especie;
+    const generoCell = document.createElement("td");
+    generoCell.textContent = mascota.sexo;
+
+    row.appendChild(dueñoCell);
+    row.appendChild(mascotasCell);
+    row.appendChild(especieCell);
+    row.appendChild(generoCell);
+    tbody.appendChild(row);
+  });
+}
+
+function obtenerNombreDueño(idDueño) {
+  const persona = dataJSON.find(persona => persona.id === idDueño);
+  return persona ? persona.nombre : "";
+}
+    
+function restablecerFiltros() {
+  visualizarRelaciones(dataOriginalPersona, dataOriginalMascotas);
+}
+    </script>
+</body>
+</html>
