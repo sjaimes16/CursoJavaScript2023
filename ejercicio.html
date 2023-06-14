@@ -3,288 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejerrcicio</title>
+    <title>Ejercicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <style>
         .responstable {
-  margin: 1em 0;
-  width: 100%;
-  overflow: hidden;
-  background: #fff;
-  color: #024457;
-  border-radius: 10px;
-  border: 1px solid #167f92;
-}
-.responstable tr {
-  border: 1px solid #d9e4e6;
-}
-.responstable tr:nth-child(odd) {
-  background-color: #eaf3f3;
-}
-.responstable th {
-  display: none;
-  border: 1px solid #fff;
-  background-color: #167f92;
-  color: #fff;
-  padding: 1em;
-}
-.responstable th:first-child {
-  display: table-cell;
-  text-align: center;
-}
-.responstable th:nth-child(2) {
-  display: table-cell;
-}
-.responstable th:nth-child(2) span {
-  display: none;
-}
-.responstable th:nth-child(2):after {
-  content: attr(data-th);
-}
-@media (min-width: 480px) {
-  .responstable th:nth-child(2) span {
-    display: block;
-  }
-  .responstable th:nth-child(2):after {
-    display: none;
-  }
-}
-.responstable td {
-  display: block;
-  word-wrap: break-word;
-  max-width: 7em;
-}
-.responstable td:first-child {
-  display: table-cell;
-  text-align: center;
-  border-right: 1px solid #d9e4e6;
-}
-@media (min-width: 480px) {
-  .responstable td {
-    border: 1px solid #d9e4e6;
-  }
-}
-.responstable th,
-.responstable td {
-  text-align: left;
-  margin: 0.5em 1em;
-}
-@media (min-width: 480px) {
-  .responstable th,
-  .responstable td {
-    display: table-cell;
-    padding: 1em;
-  }
-}
-
-body {
-  padding: 0 2em;
-  font-family: Arial, sans-serif;
-  color: #024457;
-  background: #f2f2f2;
-}
-
-h1 {
-  font-family: Verdana;
-  font-weight: normal;
-  color: #024457;
-}
-h1 span {
-  color: #167f92;
-}
-
-      </style>
+            margin: 1em 0;
+            width: 100%;
+            overflow: hidden;
+            background: #fff;
+            color: #024457;
+            border-radius: 10px;
+            border: 1px solid #167f92;
+        }
+        
+        .responstable tr {
+            border: 1px solid #d9e4e6;
+        }
+        
+        .responstable tr:nth-child(odd) {
+            background-color: #eaf3f3;
+        }
+        
+        .responstable th {
+            display: none;
+            border: 1px solid #fff;
+            background-color: #167f92;
+            color: #fff;
+            padding: 1em;
+        }
+        
+        .responstable th:first-child {
+            display: table-cell;
+            text-align: center;
+        }
+        
+        .responstable th:nth-child(2) {
+            display: table-cell;
+        }
+        
+        .responstable th:nth-child(2) span {
+            display: none;
+        }
+        
+        .responstable th:nth-child(2):after {
+            content: attr(data-th);
+        }
+        
+        @media (min-width: 480px) {
+            .responstable th:nth-child(2) span {
+                display: block;
+            }
+        
+            .responstable th:nth-child(2):after {
+                display: none;
+            }
+        }
+        
+        .responstable td {
+            display: block;
+            word-wrap: break-word;
+            max-width: 7em;
+        }
+        
+        .responstable td:first-child {
+            display: table-cell;
+            text-align: center;
+            border-right: 1px solid #d9e4e6;
+        }
+        
+        @media (min-width: 480px) {
+            .responstable td {
+                border: 1px solid #d9e4e6;
+            }
+        }
+        
+        .responstable th,
+        .responstable td {
+            text-align: left;
+            margin: 0.5em 1em;
+        }
+        
+        @media (min-width: 480px) {
+            .responstable th,
+            .responstable td {
+                display: table-cell;
+                padding: 1em;
+            }
+        }
+        
+        body {
+            padding: 0 2em;
+            font-family: Arial, sans-serif;
+            color: #024457;
+            background: #f2f2f2;
+        }
+        
+        h1 {
+            font-family: Verdana;
+            font-weight: normal;
+            color: #024457;
+        }
+        
+        h1 span {
+            color: #167f92;
+        }
+    </style>
 </head>
 <body>
-    <h1>Relaciones Mascotas y Dueños</h1>
-  
-    <table id="tablaRelaciones" class="responstable">
+  <h1>Relaciones Mascotas y Dueños</h1>
+
+  <table id="tablaRelaciones" class="responstable">
       <thead>
-        <tr>
-          <th>Dueño
-            <button onclick="filtrar('dueño')">Filtrar por Dueño</button>
-          </th>
-          <th>Mascotas
-            <button onclick="filtrar('nombre')">Filtrar por Nombre</button>
-          </th>
-          <th>Especie
-            <button onclick="filtrar('especie')">Filtrar por Especie</button>
-          </th>
-          <th>Género
-            <button onclick="filtrar('genero')">Filtrar por Género</button>
-          </th>
-        </tr>
+          <tr>
+              <th>Dueño
+                  <button class="btn btn-outline-danger" onclick="filtrar('dueño')">Filtrar por Dueño</button>
+              </th>
+              <th>Mascotas
+                  <button class="btn btn-outline-danger" onclick="filtrar('nombre')">Filtrar por Nombre</button>
+              </th>
+              <th>Especie
+                  <button class="btn btn-outline-danger" onclick="filtrar('especie')">Filtrar por Especie</button>
+              </th>
+              <th>Sexo
+                <button class="btn btn-outline-danger" onclick="filtrar('sexo')">Filtrar por Sexo</button>
+            </th>
+          </tr>
       </thead>
       <tbody>
-        <!-- Aquí se generará el contenido de la tabla -->
       </tbody>
-    </table>
-    
-    <button onclick="restablecerFiltros()">Restablecer Filtros</button>
+  </table>
 
-    <script>
-        const personas = [
-  { id: 2, nombre: 'Valentina', edad: 30, numeroMascotas: 3 },
-  { id: 5, nombre: 'Juan', edad: 51, numeroMascotas: 3 },
-  { id: 7, nombre: 'Carlos', edad: 55, numeroMascotas: 4 },
-  { id: 4, nombre: 'Laura', edad: 47, numeroMascotas: 4 },
-  { id: 6, nombre: 'Andrés', edad: 66, numeroMascotas: 3 },
-  { id: 1, nombre: 'Laura', edad: 42, numeroMascotas: 2 },
-  { id: 9, nombre: 'Laura', edad: 52, numeroMascotas: 4 },
-  { id: 8, nombre: 'María', edad: 30, numeroMascotas: 2 },
-  { id: 3, nombre: 'Sofía', edad: 18, numeroMascotas: 1 },
-  { id: 7, nombre: 'María', edad: 36, numeroMascotas: 2 }
-]
+  <button class="btn btn-outline-danger" onclick="restablecerFiltros()">Restablecer Filtros</button>
 
-const generarDataPersona = (personas) => {
-  const data = [];
+  <script>
+     const personas = [
+        { id: 2, nombre: 'Valentina', edad: 30, numeroMascotas: 3 },
+        { id: 5, nombre: 'Juan', edad: 51, numeroMascotas: 3 },
+        { id: 7, nombre: 'Carlos', edad: 55, numeroMascotas: 4 },
+        { id: 4, nombre: 'Laura', edad: 47, numeroMascotas: 4 },
+        { id: 6, nombre: 'Andrés', edad: 66, numeroMascotas: 3 },
+        { id: 1, nombre: 'Natalia', edad: 42, numeroMascotas: 2 },
+        { id: 9, nombre: 'Saray', edad: 52, numeroMascotas: 4 },
+        { id: 8, nombre: 'María', edad: 30, numeroMascotas: 2 },
+        { id: 3, nombre: 'Sofía', edad: 18, numeroMascotas: 1 },
+        { id: 10, nombre: 'Karen', edad: 36, numeroMascotas: 2 }
+    ]
 
-  for (let i = 0; i < personas.length; i++) {
-    const persona = personas[i];
-    const id = persona.id;
-    const nombre = persona.nombre;
-    const edad = persona.edad;
-    const numeroMascotas = Math.floor(Math.random() * 6);
+      function generarDataPersona() {
 
-    const jsonData = {
-      id,
-      nombre,
-      edad,
-      "numero de mascotas": numeroMascotas
-    };
+          const dataPersona = [];
+          for (let i = 0; i < personas.length; i++) {
+            const persona = personas[i];
+            const id = persona.id;
+            const nombre = persona.nombre;
+            const edad = persona.edad;
+            const numeroMascotas = Math.floor(Math.random() * 6);
+            dataPersona.push({ id, nombre, edad, numeroMascotas });
+          }
 
-    data.push(jsonData);
-  }
-
-  return data;
-};
-
-const dataOriginalPersona = generarDataPersona(personas);
-console.log(dataOriginalPersona);
-
-const especies = ["Perro", "Gato", "Conejo", "Pájaro", "Hamster"];
-const nombres = ["Danna", "Wendy", "Lucas", "Toby", "Simba", "Thor", "Max", "Linda", "Chispa", "Luna"];
-const sexos = ["Macho", "Hembra"];
-
-const generarDataJSON2 = (cantidad, dataPersona) => {
-  const data = [];
-
-  for (let i = 0; i < cantidad; i++) {
-    const id = i + 1;
-    const id_dueño = dataPersona[i].id;
-    const nombreAleatorio = nombres[Math.floor(Math.random() * nombres.length)];
-    const nombre = nombreAleatorio;
-    const edad = Math.floor(Math.random() * 15) + 1;
-    const especie = especies[Math.floor(Math.random() * especies.length)];
-    const sexo = sexos[Math.floor(Math.random() * sexos.length)];
-
-    const jsonData = {
-      id,
-      id_dueño,
-      nombre,
-      edad,
-      especie,
-      sexo
-    };
-
-    data.push(jsonData);
-  }
-
-  return data;
-};
-
-const cantidadMascotas = 10;
-const dataOriginalMascotas = generarDataJSON2(cantidadMascotas, dataOriginalPersona);
-console.log(dataOriginalMascotas);
-
-function visualizarRelaciones(dataPersona, dataMascotas) {
-  // Restablecer los datos originales
-  const dataOriginalPersona = dataPersona;
-  const dataOriginalMascotas = dataMascotas;
-
-  const tablaRelaciones = document.getElementById("tablaRelaciones");
-  const tbody = tablaRelaciones.querySelector("tbody");
-  tbody.innerHTML = ""; // Limpiar el contenido actual de la tabla
-
-  dataPersona.forEach(persona => {
-    const mascotas = dataMascotas.filter(mascota => mascota.id_dueño === persona.id);
-
-    mascotas.forEach(mascota => {
-      const row = document.createElement("tr");
-      const dueñoCell = document.createElement("td");
-      dueñoCell.textContent = persona.nombre;
-      const mascotasCell = document.createElement("td");
-      mascotasCell.textContent = mascota.nombre;
-      const especieCell = document.createElement("td");
-      especieCell.textContent = mascota.especie;
-      const generoCell = document.createElement("td");
-      generoCell.textContent = mascota.sexo;
-
-      row.appendChild(dueñoCell);
-      row.appendChild(mascotasCell);
-      row.appendChild(especieCell);
-      row.appendChild(generoCell);
-      tbody.appendChild(row);
-    });
-  });
-}
-
-// Ejemplo de uso
-visualizarRelaciones(dataOriginalPersona, dataOriginalMascotas);
-
-
-
-function filtrar(tipoFiltro) {
-  const filtro = prompt(`Ingresa el valor para filtrar por ${tipoFiltro}:`);
-
-  if (filtro !== null) {
-    const mascotasFiltradas = dataOriginalMascotas.filter(mascota => {
-      if (tipoFiltro === "dueño") {
-        return mascota.id_dueño.toString() === filtro;
-      } else if (tipoFiltro === "nombre") {
-        return mascota.nombre === filtro;
-      } else if (tipoFiltro === "especie") {
-        return mascota.especie.toLowerCase() === filtro.toLowerCase();
-      } else if (tipoFiltro === "genero") {
-        return mascota.sexo.toLowerCase() === filtro.toLowerCase();
+          return dataPersona;
       }
-    });
 
-    visualizarRelaciones(dataOriginalMascotas, mascotasFiltradas);
-  }
-}
-    
-function visualizarFiltradas(mascotasFiltradas) {
-  const tablaRelaciones = document.getElementById("tablaRelaciones");
-  const tbody = tablaRelaciones.querySelector("tbody");
-  tbody.innerHTML = ""; // Limpiar el contenido actual de la tabla
+      function generarDataMascota(cantidadMascotas) {
+          const especies = ["Perro", "Gato", "Conejo", "Pájaro", "Tortuga"];
+          const nombres = ["Danna", "Bambi", "Lucas", "Toby", "Simba", "Thor", "Max", "Linda", "Chispa", "Luna"];
+          const sexos = ["Macho", "Hembra"];
+          const dataPersona = generarDataPersona();
 
-  mascotasFiltradas.forEach(mascota => {
-    const row = document.createElement("tr");
-    const dueñoCell = document.createElement("td");
-    dueñoCell.textContent = obtenerNombreDueño(mascota.id_dueño);
-    const mascotasCell = document.createElement("td");
-    mascotasCell.textContent = mascota.nombre;
-    const especieCell = document.createElement("td");
-    especieCell.textContent = mascota.especie;
-    const generoCell = document.createElement("td");
-    generoCell.textContent = mascota.sexo;
+          const dataMascota = [];
+          for (let i = 0; i < cantidadMascotas && i < dataPersona.length; i++) {
+              const nombreMascota = nombres[Math.floor(Math.random() * nombres.length)];
+              const especie = especies[Math.floor(Math.random() * especies.length)];
+              const id_dueño = dataPersona[i].id;
+              const sexo = sexos[Math.floor(Math.random() * sexos.length)];
+              dataMascota.push({ nombreMascota, especie, id_dueño, sexo });
+          }
 
-    row.appendChild(dueñoCell);
-    row.appendChild(mascotasCell);
-    row.appendChild(especieCell);
-    row.appendChild(generoCell);
-    tbody.appendChild(row);
-  });
-}
+          return dataMascota;
+      }
 
-function obtenerNombreDueño(idDueño) {
-  const persona = dataJSON.find(persona => persona.id === idDueño);
-  return persona ? persona.nombre : "";
-}
-    
-function restablecerFiltros() {
-  visualizarRelaciones(dataOriginalPersona, dataOriginalMascotas);
-}
-    </script>
+      function generarTabla() {
+          const dataMascota = generarDataMascota(10); // Generar 10 mascotas
+          console.log("dataMascota", dataMascota)
+          const dataPersona = generarDataPersona(); // Obtener los datos de los dueños
+          console.log("dataPersona", dataPersona)
+
+          const tabla = document.getElementById("tablaRelaciones");
+          const tbody = tabla.getElementsByTagName("tbody")[0];
+          tbody.innerHTML = ""; // Limpiar el contenido actual de la tabla
+
+          for (let i = 0; i < dataMascota.length; i++) {
+              const mascota = dataMascota[i];
+              const row = document.createElement("tr");
+
+              const dueñoCell = document.createElement("td");
+              const dueñoNombre = dataPersona.find(persona => persona.id === mascota.id_dueño).nombre;
+              dueñoCell.textContent = dueñoNombre;
+
+              const mascotaCell = document.createElement("td");
+              mascotaCell.textContent = mascota.nombreMascota;
+
+              const especieCell = document.createElement("td");
+              especieCell.textContent = mascota.especie;
+
+              const sexoCell = document.createElement("td");
+              sexoCell.textContent = mascota.sexo;
+
+              row.appendChild(dueñoCell);
+              row.appendChild(mascotaCell);
+              row.appendChild(especieCell);
+              row.appendChild(sexoCell);
+
+              tbody.appendChild(row);
+          }
+      }
+
+      function filtrar(tipoFiltro) {
+          const filtro = prompt(`Ingresa el valor para filtrar por ${tipoFiltro}:`);
+
+          if (filtro !== null) {
+              const tabla = document.getElementById("tablaRelaciones");
+              const tbody = tabla.getElementsByTagName("tbody")[0];
+
+              for (let i = 0; i < tbody.rows.length; i++) {
+                  const row = tbody.rows[i];
+                  const contenido = row.cells[0].textContent; // Columna del dueño
+
+                  if (tipoFiltro === "dueño" && contenido.toLowerCase() === filtro.toLowerCase()) {
+                      row.style.display = ""; // Mostrar la fila
+                  } else if (tipoFiltro === "nombre" && row.cells[1].textContent.toLowerCase() === filtro.toLowerCase()) {
+                      row.style.display = ""; // Mostrar la fila
+                  } else if (tipoFiltro === "especie" && row.cells[2].textContent.toLowerCase() === filtro.toLowerCase()) {
+                      row.style.display = ""; // Mostrar la fila
+                  } else if (tipoFiltro === "sexo" && row.cells[3].textContent.toLowerCase() === filtro.toLowerCase()) {
+                      row.style.display = ""; // Mostrar la fila
+                   } else {
+                      row.style.display = "none"; // Ocultar la fila
+                  }
+              }
+          }
+      }
+
+      generarTabla(); // Generar la tabla al cargar la página
+
+      function restablecerFiltros() {
+        generarTabla();
+      }
+  </script>
 </body>
 </html>
